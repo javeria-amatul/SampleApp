@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.branch.sampleapp"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+
+            // Branch Integration Keys
+            resValue 'string', 'branch_io_scheme', '"com.branch.sampleapp://"'
+            resValue 'string', 'branch_io_host', '"branchio"'
+            resValue 'string', 'branch_key_live', '"key_live_acM9tJxuZy5eDLycBWtXRlpcwwok3iCA"'
+            resValue 'string', 'branch_key_test', '"key_test_gaR4uSqE7s9bwRAauWCYKnfgCtip4pvI"'
+            resValue 'string', 'branch_link_test', '"h47dy.test-app.link"'
+            resValue 'string', 'branch_alternate_link_test', '"h47dy-alternate.test-app.link"'
+
+
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // Branch Integration Keys
+            resValue 'string', 'branch_io_scheme', '"com.branch.sampleapp://"'
+            resValue 'string', 'branch_io_host', '"branchio"'
+            resValue 'string', 'branch_key_live', '"key_live_acM9tJxuZy5eDLycBWtXRlpcwwok3iCA"'
+            resValue 'string', 'branch_key_test', '"key_test_gaR4uSqE7s9bwRAauWCYKnfgCtip4pvI"'
+            resValue 'string', 'branch_link_test', '"h47dy.test-app.link"'
+            resValue 'string', 'branch_alternate_link_test', '"h47dy-alternate.test-app.link"'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.lifecycle:lifecycle-process:2.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //Branch.io dependencies
+    implementation 'io.branch.sdk.android:library:5.+'
+    // required if your app is in the Google Play Store (tip: avoid using bundled play services libs)
+    implementation 'com.google.firebase:firebase-appindexing:19.0.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:16+'
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Branch Demo</string>
+    <string name="link_title">Branch Demo</string>
+    <string name="link_desc">Check out this app!</string>
+</resources>
